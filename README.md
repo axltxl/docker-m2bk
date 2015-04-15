@@ -1,0 +1,3 @@
+#m2bk as a Docker container
+
+Isn't that nice?, not only to have [m2bk](https://github.com/axltxl/m2bk) for your mongo backups but also to isolate its execution inside a container (which also could be run spontaneously to be later torn down just like that)?, well ... now you can :) ...
