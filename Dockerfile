@@ -1,12 +1,5 @@
-# Copyright (C) Blanclink, Inc.
-# ---------------------------
-# m2bk: mongodump to our mongodb and send it to S3
-# Author: Dave Franco <dave.franco@blanclink.com>
-# ---------------------------
-# Blancride daily reports docker container
-
 FROM python:3.3
-#FROM mongo:2.6
+
 
 MAINTAINER Dave J. Franco <dave.franco@blanclink.com>
 
@@ -21,9 +14,8 @@ RUN apt-get install -y tar \
                    dialog \
                    net-tools \
                    build-essential
-# Install pip's dependency: setuptools:
-#RUN apt-get install -y python3.4 python-dev python-distribute python-pip
 
+#Install mongodb-tools
 RUN \
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
   echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' > /etc/apt/sources.list.d/mongodb.list && \
