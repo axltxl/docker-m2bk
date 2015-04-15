@@ -1,19 +1,16 @@
 FROM python:3.3
-
-
-MAINTAINER Dave J. Franco <dave.franco@blanclink.com>
-
+MAINTAINER Alejandro Ricoveri <alejandroricoveri@gmail.com>
 RUN apt-get update && apt-get upgrade -y
 
 #Install container essentials
-RUN apt-get install -y tar \
-                   git \
-                   curl \
-                   nano \
-                   wget \
-                   dialog \
-                   net-tools \
-                   build-essential
+#RUN apt-get install -y tar \
+#                   git \
+#                   curl \
+#                   nano \
+#                   wget \
+#                   dialog \
+#                   net-tools \
+#                   build-essential
 
 #Install mongodb-tools
 RUN \
@@ -25,10 +22,11 @@ RUN \
 #Install m2bk
 RUN pip install m2bk
 
+#
 VOLUME ["/dev/log"]
 
 #Add m2bk configuration file
-ADD m2bk.yaml /etc/m2bk.yaml
+#ADD m2bk.yaml /etc/m2bk.yaml
 
-CMD ["m2bk", "-sc", "/etc/m2bk.yaml"]
-
+#CMD ["m2bk", "-sc", "/etc/m2bk.yaml"]
+ENTRYPOINT ["/usr/bin/m2bk"]
