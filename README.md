@@ -2,6 +2,31 @@
 
 Isn't that nice?, not only to have [m2bk](https://github.com/axltxl/m2bk) for your mongo backups but also to isolate its execution inside a container (which also could be run spontaneously to be later torn down just like that)?, well ... now you can :) ...
 
+## How to use this image
+
+First of all, you need to install it
+
+```bash
+docker pull axltxl/m2bk
+```
+
+However, if you still want to build it from source, you can do like so:
+
+```bash
+git clone git@github.com:axltxl/docker-m2bk.git
+cd m2bk
+docker build -t axltxl/m2bk . 
+```
+
+Once you are done, you can proceed to execute a `m2bk` container
+
+```bash
+# Specify your m2bk configuration file via a -v mount
+# Give m2bk a rsyslog socket in the same fashion
+docker run --rm -v /dev/log:/dev/log -v /path/to/your/m2bk.yaml:/etc/m2bk.yaml  axltxl/m2bk -s
+```
+NOTE: since `m2bk` relies on `rsyslog` to output its log entries, it is still necessary to pass a proper `rsyslog` UNIX socket for the container to work (`/dev/log`). 
+
 ##Copyright and Licensing
 Copyright (c) 2015 Alejandro Ricoveri
 
